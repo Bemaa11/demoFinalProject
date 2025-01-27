@@ -5,6 +5,9 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 
+import static helper.Utility.quitDriver;
+import static helper.Utility.startDriver;
+
 public class Hooks {
 
     @BeforeAll
@@ -17,9 +20,12 @@ public class Hooks {
 
     @Before
     public void beforeTest(){
+        startDriver();
     }
 
     @After
-    public void afterTest(){
+    public void afterTest() throws InterruptedException {
+        Thread.sleep(3000);
+        quitDriver();
     }
 }
